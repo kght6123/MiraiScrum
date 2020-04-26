@@ -2,9 +2,9 @@
   <div class="p-2">
     <Breadcrumbs :items="[
     { label: 'プロジェクト名', url: '#' },
-    { label: '案件名', url: '#' },
-    { label: 'プロダクトバックログ名', url: '#' },
-    { label: 'スプリントバックログ', url: '#' },
+    { label: '6月', url: '#' },
+    { label: '第2週', url: '#' },
+    { label: '6/14(火)', url: '#' },
     ]" />
     <div class="board">
       <draggable
@@ -22,40 +22,14 @@
           @click="show"
         >
           <div>{{ element.name }}</div>
-          <div>完了の定義</div>
+          <!-- <div>完了の定義</div> -->
           <!--div>細分化タスク１</div>
           <div>細分化タスク２</div>
           <div>細分化タスク３</div-->
-          <div class="icon">5</div>
+          <div class="icon">{{ element.pointMitumori }}</div>
         </div>
         <div slot="header" class="card-group-header">
           <h3 class="title">TODO</h3>
-          <div class="icon" @click="add">➕</div>
-        </div>
-      </draggable>
-      <draggable
-        id="first"
-        data-source="juju"
-        :list="list"
-        draggable=".card"
-        group="a"
-        class="card-group bg-blue-300"
-      >
-        <div
-          v-for="element in list"
-          :key="element.name"
-          class="card"
-          @click="showDialog"
-        >
-          <div>{{ element.name }}</div>
-          <div>完了の定義</div>
-          <!--div>細分化タスク１</div>
-          <div>細分化タスク２</div>
-          <div>細分化タスク３</div-->
-          <div class="icon">5</div>
-        </div>
-        <div slot="header" class="card-group-header">
-          <h3 class="title">1Week</h3>
           <div class="icon" @click="add">➕</div>
         </div>
       </draggable>
@@ -72,11 +46,11 @@
           @click="showModalComponent"
         >
           <div>{{ element.name }}</div>
-          <div>完了の定義</div>
+          <!-- <div>完了の定義</div> -->
           <!--div>細分化タスク１</div>
           <div>細分化タスク２</div>
           <div>細分化タスク３</div-->
-          <div class="icon">5</div>
+          <div class="icon">{{ element.pointMitumori }}</div>
         </div>
         <div slot="header" class="card-group-header">
           <h3 class="title">DOING</h3>
@@ -95,11 +69,11 @@
           class="card"
         >
           <div>{{ element.name }}</div>
-          <div>完了の定義</div>
+          <!-- <div>完了の定義</div> -->
           <!--div>細分化タスク１</div>
           <div>細分化タスク２</div>
           <div>細分化タスク３</div-->
-          <div class="icon">5</div>
+          <div class="icon">{{ element.pointMitumori }}</div>
         </div>
         <div slot="header" class="card-group-header">
           <h3 class="title">DONE</h3>
@@ -136,17 +110,17 @@ export default {
     return {
       id: 6,
       list: [
-        { name: "スプリント１", id: 0 },
-        { name: "スプリント２", id: 1 },
-        { name: "スプリント３", id: 2 }
+        { name: "1-1-1 モーダルウィンドウのコンポーネントを調べる", id: 0, pointMitumori: 1 },
+        { name: "1-1-2 モーダルウィンドウのコンポーネントを作る", id: 1, pointMitumori: 2 },
+        { name: "1-2 見積もりポイントのアイコンをコンポーネント化する", id: 2, pointMitumori: 1 }
       ],
       list2: [
-        { name: "スプリント４", id: 3 },
-        { name: "スプリント５", id: 4 }
+        { name: "3 見積もりポイントのアイコンを作る", id: 3, pointMitumori: 1 },
+        { name: "2-2 mongo-connectorが起動しない問題を調べる", id: 4, pointMitumori: 1 }
       ],
       list3: [
-        { name: "スプリント６", id: 5 },
-        { name: "スプリント７", id: 6 }
+        { name: "2-1 mongo-connectorのコンテナに入る方法を調べる", id: 5, pointMitumori: 1 },
+        { name: "4-1 elastic-searchで日本語の全文検索をできる方法を調べる", id: 6, pointMitumori: 1 }
       ]
     }
   },

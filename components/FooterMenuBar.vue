@@ -1,9 +1,10 @@
 <template>
   <div class="fixedfooter">
-    <div class="icon">ttt</div>
-    <div class="icon">fff</div>
-    <div class="icon">B!B!</div>
-    <div class="icon">line</div>
+    <div class="icon">メニュー１</div>
+    <div class="icon">めにゅー２</div>
+    <div class="icon">めにゅー３</div>
+    <div class="icon">めにゅー４</div>
+    <div class="icon">設定？</div>
   </div>
 </template>
 

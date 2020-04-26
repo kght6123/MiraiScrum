@@ -19,7 +19,7 @@ html {
 
 html {
   /* 字間にゆとりを持たせる */
-  letter-spacing: .1em;
+  /* letter-spacing: .1em; */
   /*/ 文字の均等割り付けをデフォルトにする
   // text-align: justify;*/
   /* レスポンシブフォントサイズ */
@@ -59,7 +59,7 @@ button:hover, button:active, button:focus,
   @apply shadow rounded p-2 px-4 mb-1 flex flex-col text-sm relative;
 }
 .card .icon {
-  @apply absolute bottom-0 right-0 font-bold rounded-full w-5 h-5 text-center bg-gray-500 text-gray-100;
+  @apply absolute bottom-0 right-0 font-bold rounded-full w-5 h-5 flex justify-center items-center bg-gray-500 text-gray-100;
 }
 .card-group {
   @apply p-2 rounded shadow-xs mx-1;
