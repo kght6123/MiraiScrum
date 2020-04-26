@@ -33,7 +33,7 @@ body {
    @apply bg-gray-100;
 }
 input[type=text], input[type=search], textarea, button {
-  @apply appearance-none border-none rounded bg-transparent font-bold outline-none;
+  @apply appearance-none border-none rounded bg-transparent outline-none text-sm;
   transition: all 0.3s ease-in-out;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
   color: rgba(0, 0, 0, 0.65);
@@ -56,14 +56,14 @@ button:hover, button:active, button:focus,
   background-color: rgba(255, 255, 255, 0.25);
 }
 .card {
-  @apply shadow rounded p-2 px-4 mb-1 flex flex-col text-sm relative;
+  @apply shadow-md rounded p-2 px-4 mb-1 flex flex-col text-sm relative;
 }
 .card .icon {
   @apply absolute bottom-0 right-0 font-bold rounded-full w-5 h-5 flex justify-center items-center bg-gray-500 text-gray-100;
 }
 .card-group {
-  @apply p-2 rounded shadow-xs mx-1;
-  min-height: 20rem;
+  @apply p-2 rounded shadow-md mx-1;
+  min-height: 2rem;
 }
 .card-group-header {
   @apply relative;
@@ -71,9 +71,15 @@ button:hover, button:active, button:focus,
 .card-group-header .title {
   color: rgba(255, 255, 255, 0.75);
 }
+.card-group-header.light .title {
+  color: rgba(0, 0, 0, 0.75);
+}
 .card-group-header .icon {
-  @apply absolute top-0 right-0;
+  @apply absolute top-0 right-0 mr-1;
   color: rgba(255, 255, 255, 0.75);
+}
+.card-group-header.light .icon {
+  color: rgba(0, 0, 0, 0.75);
 }
 .board {
   @apply flex flex-row p-2;
@@ -105,7 +111,8 @@ a:visited { @apply underline text-purple-600; }
   background: rgba(255, 255, 255, 0.1) !important;
 }
 .v--modal {
-  background: rgba(255, 255, 255, 0.95) !important;
+  @apply px-2 py-4 rounded overflow-y-auto !important;
+  background: rgba(255, 255, 255, 0.85) !important;
 }
 @media (prefers-color-scheme: light) {
   /* light mode */

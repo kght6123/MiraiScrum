@@ -87,24 +87,25 @@
     { id: 3, name: 'B', message: 'フィードバックは〜だよ！！', my: false },
     { id: 4, name: 'A', message: '感謝！次からは気をつけるよ！', my: true },
     ]" />
-    <modal name="hello-world">
-      hello, world!
-    </modal>
+    <BacklogDetail></BacklogDetail>
     <nuxt-link to="/works">投稿＆全文検索のサンプルへ飛ぶ</nuxt-link>
     <nuxt-link to="/reports">個別ページのサンプルへ飛ぶ</nuxt-link>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import draggable from "vuedraggable"
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
 import Balloons from '~/components/Balloons.vue'
+import BacklogDetail from '~/components/BacklogDetail.vue'
 
 export default {
   components: {
     draggable,
     Breadcrumbs,
-    Balloons
+    Balloons,
+    BacklogDetail
   },
   data() {
     return {
@@ -125,6 +126,10 @@ export default {
     }
   },
   methods: {
+     ...mapActions('component-model/BacklogDetail', [
+      'showDetail',
+      'hideDetail'
+    ]),
     add: function() {
       this.list.push({ name: "Juan1 " + this.id, id: this.id++ })
     },
@@ -143,11 +148,13 @@ export default {
     replace3: function() {
       this.list3 = [{ name: "Edgard3", id: this.id++ }]
     },
-    show () {
-      this.$modal.show('hello-world');
+    async show () {
+      // this.$modal.show('hello-world');
+      await this.showDetail()
     },
-    hide () {
-      this.$modal.hide('hello-world');
+    async hide () {
+      // this.$modal.hide('hello-world');
+      await this.hideDetail()
     },
     showDialog () {
       this.$modal.show('dialog', {

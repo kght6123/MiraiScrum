@@ -1,7 +1,7 @@
 {
-  "name": "mirai-share",
+  "name": "mirai-scrum",
   "version": "1.0.0",
-  "description": "みんなのみらいにいかすじょうほうをまとめて、みんなにきょうゆうするよ",
+  "description": "フラクタルスプリントを運用するためのツール",
   "author": "kght6123",
   "private": true,
   "scripts": {

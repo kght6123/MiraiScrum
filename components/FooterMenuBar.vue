@@ -33,7 +33,7 @@ body {
   bottom: 0;
   height: 75px;
   height: calc(75px + env(safe-area-inset-bottom));
-  width: calc(100% - 14px - 0.5em);
+  width: calc(100% - 1em);
   display: flex;
   z-index: 998;
   backdrop-filter: blur(7px) !important;

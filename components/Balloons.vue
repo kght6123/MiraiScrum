@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div v-for="item in items" :key="item.id">
+    <div v-for="item in items" :key="item.id" class="mb-2">
       <!--吹き出しはじまり-->
       <div v-if="!item.my" class="balloon-left">
         <div class="faceicon">
-          <img :alt="item.name" />
+          <img src="/avater-1.png" :alt="item.name" />
         </div>
         <div class="chatting">
           <div class="says-left">
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="faceicon">
-          <img :alt="item.name" />
+          <img src="/avater-2.png" :alt="item.name" />
         </div>
       </div>
       <!--吹き出し終わり-->
@@ -80,10 +80,12 @@ export default {
 }
 .balloon-left .faceicon {
 	position: absolute;
+	top: 0;
 	left: 0.25em;
 }
 .balloon-right .faceicon {
 	position: absolute;
+	top: 0;
 	right: 0.25em;
 }
 .balloon-left .faceicon img, .balloon-right .faceicon img {
