@@ -1,95 +1,109 @@
 <template>
-  <div class="p-2">
-    <Breadcrumbs :items="[
-    { label: 'プロジェクト名', url: '#' },
-    { label: '6月', url: '#' },
-    { label: '第2週', url: '#' },
-    { label: '6/14(火)', url: '#' },
-    ]" />
-    <div class="board">
-      <draggable
-        id="first"
-        data-source="juju"
-        :list="list"
-        draggable=".card"
-        group="a"
-        class="card-group bg-blue-300"
-      >
-        <div
-          v-for="element in list"
-          :key="element.name"
-          class="card"
-          @click="show"
-        >
-          <div>{{ element.name }}</div>
-          <!-- <div>完了の定義</div> -->
-          <!--div>細分化タスク１</div>
-          <div>細分化タスク２</div>
-          <div>細分化タスク３</div-->
-          <div class="icon">{{ element.pointMitumori }}</div>
+  <div>
+    <div class="grid items-center p-2" style="grid-template-rows: repeat(3, auto); grid-template-columns: repeat(3, auto); justify-items: center;">
+      <div></div>
+      <div><font-awesome-icon :icon="['fas', 'angle-up']" /></div>
+      <div></div>
+      <div><font-awesome-icon :icon="['fas', 'angle-left']" /></div>
+      <div class="p-2">
+        <Breadcrumbs :items="[
+        { label: 'プロジェクト名', url: '#' },
+        { label: '6月', url: '#' },
+        { label: '第2週', url: '#' },
+        { label: '6/14(火)', url: '#' },
+        ]" class="ml-3" />
+        <div class="board">
+          <draggable
+            id="first"
+            data-source="juju"
+            :list="list"
+            draggable=".card"
+            group="a"
+            class="card-group bg-blue-300"
+          >
+            <div
+              v-for="element in list"
+              :key="element.name"
+              class="card"
+              @click="show"
+            >
+              <div>{{ element.name }}</div>
+              <!-- <div>完了の定義</div> -->
+              <!--div>細分化タスク１</div>
+              <div>細分化タスク２</div>
+              <div>細分化タスク３</div-->
+              <div class="icon">{{ element.pointMitumori }}</div>
+            </div>
+            <div slot="header" class="card-group-header">
+              <h3 class="title">TODO</h3>
+              <div class="icon" @click="add">➕</div>
+            </div>
+          </draggable>
+          <draggable
+            :list="list2"
+            draggable=".card"
+            group="a"
+            class="card-group bg-indigo-300"
+          >
+            <div
+              v-for="element in list2"
+              :key="element.name"
+              class="card"
+              @click="showModalComponent"
+            >
+              <div>{{ element.name }}</div>
+              <!-- <div>完了の定義</div> -->
+              <!--div>細分化タスク１</div>
+              <div>細分化タスク２</div>
+              <div>細分化タスク３</div-->
+              <div class="icon">{{ element.pointMitumori }}</div>
+            </div>
+            <div slot="header" class="card-group-header">
+              <h3 class="title">DOING</h3>
+              <div class="icon" @click="add2">➕</div>
+            </div>
+          </draggable>
+          <draggable
+            :list="list3"
+            draggable=".card"
+            group="a"
+            class="card-group bg-gray-400"
+          >
+            <div
+              v-for="element in list3"
+              :key="element.name"
+              class="card"
+            >
+              <div>{{ element.name }}</div>
+              <!-- <div>完了の定義</div> -->
+              <!--div>細分化タスク１</div>
+              <div>細分化タスク２</div>
+              <div>細分化タスク３</div-->
+              <div class="icon">{{ element.pointMitumori }}</div>
+            </div>
+            <div slot="header" class="card-group-header">
+              <h3 class="title">DONE</h3>
+              <div class="icon" @click="add3">➕</div>
+            </div>
+          </draggable>
         </div>
-        <div slot="header" class="card-group-header">
-          <h3 class="title">TODO</h3>
-          <div class="icon" @click="add">➕</div>
-        </div>
-      </draggable>
-      <draggable
-        :list="list2"
-        draggable=".card"
-        group="a"
-        class="card-group bg-indigo-300"
-      >
-        <div
-          v-for="element in list2"
-          :key="element.name"
-          class="card"
-          @click="showModalComponent"
-        >
-          <div>{{ element.name }}</div>
-          <!-- <div>完了の定義</div> -->
-          <!--div>細分化タスク１</div>
-          <div>細分化タスク２</div>
-          <div>細分化タスク３</div-->
-          <div class="icon">{{ element.pointMitumori }}</div>
-        </div>
-        <div slot="header" class="card-group-header">
-          <h3 class="title">DOING</h3>
-          <div class="icon" @click="add2">➕</div>
-        </div>
-      </draggable>
-      <draggable
-        :list="list3"
-        draggable=".card"
-        group="a"
-        class="card-group bg-gray-400"
-      >
-        <div
-          v-for="element in list3"
-          :key="element.name"
-          class="card"
-        >
-          <div>{{ element.name }}</div>
-          <!-- <div>完了の定義</div> -->
-          <!--div>細分化タスク１</div>
-          <div>細分化タスク２</div>
-          <div>細分化タスク３</div-->
-          <div class="icon">{{ element.pointMitumori }}</div>
-        </div>
-        <div slot="header" class="card-group-header">
-          <h3 class="title">DONE</h3>
-          <div class="icon" @click="add3">➕</div>
-        </div>
-      </draggable>
+      </div>
+      <div><font-awesome-icon :icon="['fas', 'angle-right']" /></div>
+      <div></div>
+      <div><font-awesome-icon :icon="['fas', 'angle-down']" /></div>
+      <div></div>
     </div>
-    <Balloons class="mt-2" :items="[
-    { id: 1, name: 'A', message: '成果物と目的の差分は〜だよ！', my: true },
-    { id: 2, name: 'A', message: '差分の理由は〜だよ！', my: true },
-    { id: 3, name: 'B', message: 'フィードバックは〜だよ！！', my: false },
-    { id: 4, name: 'A', message: '感謝！次からは気をつけるよ！', my: true },
-    ]" />
-    <BacklogDetail></BacklogDetail>
-    <nuxt-link to="/works">投稿＆全文検索のサンプルへ飛ぶ</nuxt-link>
-    <nuxt-link to="/reports">個別ページのサンプルへ飛ぶ</nuxt-link>
+    <div>
+      <Balloons class="mt-2" :items="[
+      { id: 1, name: 'A', message: '成果物と目的の差分は〜だよ！', my: true },
+      { id: 2, name: 'A', message: '差分の理由は〜だよ！', my: true },
+      { id: 3, name: 'B', message: 'フィードバックは〜だよ！！', my: false },
+      { id: 4, name: 'A', message: '感謝！次からは気をつけるよ！', my: true },
+      ]" />
+      <BacklogDetail></BacklogDetail>
+      <nuxt-link to="/works">投稿＆全文検索のサンプルへ飛ぶ</nuxt-link>
+      <nuxt-link to="/reports">個別ページのサンプルへ飛ぶ</nuxt-link>
+    </div>
   </div>
 </template>
 

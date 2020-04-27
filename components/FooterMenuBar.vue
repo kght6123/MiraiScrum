@@ -22,7 +22,7 @@ export default {
 
 <style>
 body {
-  padding-bottom: 75px;
+  padding-bottom: calc(75px + 0.5rem);
 }
 </style>
 
@@ -33,7 +33,7 @@ body {
   bottom: 0;
   height: 75px;
   height: calc(75px + env(safe-area-inset-bottom));
-  width: calc(100% - 1em);
+  width: calc(100% - 1rem);
   display: flex;
   z-index: 998;
   backdrop-filter: blur(7px) !important;
@@ -54,7 +54,7 @@ body {
   line-height: 50px;
   line-height: calc(50px + env(safe-area-inset-bottom));
   text-align: center;
-  font-size: 1em;
+  font-size: 1rem;
 }
 .icon:hover, .icon:active, .icon:focus {
   @apply bg-indigo-200 opacity-50;
