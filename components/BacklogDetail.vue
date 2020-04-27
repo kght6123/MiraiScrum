@@ -41,10 +41,10 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters('component-model/BacklogDetail', ['getValue'])
+    ...mapGetters('services/BacklogDetail', ['getValue'])
   },
   methods: {
-    ...mapActions('component-model/BacklogDetail', [
+    ...mapActions('services/BacklogDetail', [
       'showDetail',
       'hideDetail'
     ])

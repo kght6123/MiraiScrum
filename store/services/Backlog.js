@@ -1,5 +1,40 @@
 const state = () => ({
-  value: ''
+  value: '',
+  backlogs: [
+    {
+      id: '',
+      title: '',
+      point: 2, // 1,2,4,5,8
+      unit: 'weekly', // monthly, weekly, day
+      unitNumber: 1, // 1-12, 1-5, 1-7
+      parents: ['monthly-id', 'weekly-id'],
+      childs: ['day-id', 'day-id'],
+      createAt: '2020-06-20 10:00',
+      createUserId: '',
+      updateAt: '2020-06-20 10:00',
+      updateUserId: '',
+      mainUserIds: [],
+    }
+  ],
+  backlogHistries: [
+    {
+      id: '',
+      backlogId: '',
+      unit: 'mintus',
+      unitNumber: 15,
+      registAt: '2020-06-20 10:00',
+      registUserId: '',
+      comment: ''
+    }
+  ],
+  backlogComments: [
+    {
+      id: '',
+      postAt: '2020-06-20 10:00',
+      postUserId: '',
+      message: '成果物と目的の差分は〜だよ！'
+    },
+  ]
 })
 
 const mutations = {
@@ -14,17 +49,17 @@ const actions = {
     await dispatch('hoge', getters.getValue)
     commit('setValue', value)
     const value = rootGetters[
-      'model/component-model/BacklogDetail/getValue'
+      'model/services/BacklogDetail/getValue'
     ]
     commit(
-      'model/component-model/BacklogDetail/setValue',
+      'model/services/BacklogDetail/setValue',
       value,
       {
         root: true
       }
     )
     dispatch(
-      'model/component-model/BacklogDetail/hoge',
+      'model/services/BacklogDetail/hoge',
       {},
       {
         root: true

@@ -126,7 +126,7 @@ export default {
     }
   },
   methods: {
-     ...mapActions('component-model/BacklogDetail', [
+     ...mapActions('services/BacklogDetail', [
       'showDetail',
       'hideDetail'
     ]),
