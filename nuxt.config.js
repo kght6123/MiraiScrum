@@ -46,6 +46,8 @@ module.exports = {
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    // Doc: https://github.com/nuxt-community/fontawesome-module
+    '@nuxtjs/fontawesome',
   ],
   /*
   ** Nuxt.js modules
@@ -56,8 +58,6 @@ module.exports = {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    // Doc: https://github.com/nuxt-community/font-awesome
-    '@nuxtjs/font-awesome',
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/markdownit
     '@nuxtjs/markdownit',
     // Doc: https://github.com/nuxt-community/style-resources-module
@@ -99,6 +99,11 @@ module.exports = {
   dotenv: {
     /* module options */
     filename: '.env'
+  },
+  fontawesome: {
+    icons: {
+      solid: ['faHome','faAngleUp','faAngleLeft','faAngleRight','faAngleDown']
+    }
   },
   /*
   ** Build configuration
