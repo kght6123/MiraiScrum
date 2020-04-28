@@ -1,15 +1,5 @@
 const state = () => ({
   value: '',
-  canbans: [
-    {
-      id: '',
-      title: 'TODO', // TODO, DOING, DONE
-      unit: 'weekly', // monthly, weekly, day
-      unitNumber: 1, // 1-12, 1-5, 1-7
-      parents: ['monthly-id', 'weekly-id'],
-      childs: ['day-id', 'day-id'],
-    }
-  ],
   backlogs: [
     {
       id: '',
@@ -23,25 +13,6 @@ const state = () => ({
       mainUserIds: [],
     }
   ],
-  backlogHistries: [
-    {
-      id: '',
-      backlogId: '',
-      unit: 'mintus',
-      unitNumber: 15,
-      registAt: '2020-06-20 10:00',
-      registUserId: '',
-      comment: ''
-    }
-  ],
-  backlogComments: [
-    {
-      id: '',
-      postAt: '2020-06-20 10:00',
-      postUserId: '',
-      message: '成果物と目的の差分は〜だよ！'
-    },
-  ]
 })
 
 const mutations = {
