@@ -63,7 +63,8 @@ button:hover, button:active, button:focus,
 }
 .card-group {
   @apply p-2 rounded shadow-md mx-1;
-  min-height: 2rem;
+  min-width: 6rem;
+  min-height: 6rem;
 }
 .card-group-header {
   @apply relative;
