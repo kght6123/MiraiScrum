@@ -1,5 +1,5 @@
 // read env.
-const envObj = require(`./env.js`)
+const envObj = require(`./env.json`)
 
 module.exports = {
   mode: 'spa',

@@ -94,6 +94,7 @@
       <div></div>
     </div>
     <div>
+      <!--
       <Balloons class="mt-2" :items="[
       { id: 1, name: 'A', message: '成果物と目的の差分は〜だよ！', my: true },
       { id: 2, name: 'A', message: '差分の理由は〜だよ！', my: true },
@@ -103,6 +104,7 @@
       <BacklogDetail></BacklogDetail>
       <nuxt-link to="/works">投稿＆全文検索のサンプルへ飛ぶ</nuxt-link>
       <nuxt-link to="/reports">個別ページのサンプルへ飛ぶ</nuxt-link>
+      -->
     </div>
   </div>
 </template>

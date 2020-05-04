@@ -3,7 +3,7 @@ LABEL maintainer="kght6123"
 
 RUN apk update
 RUN apk add --update --no-cache wget rpm
-RUN wget https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-rpm-macros-7-23.noarch.rpm
+RUN wget https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-rpm-macros-7-24.noarch.rpm
 #RUN rpm -ivh epel-rpm-macros-7-23.noarch.rpm
 #RUN apk add --update --no-cache epel-release
 RUN apk add --update --no-cache \

@@ -19,7 +19,16 @@ $ yarn start
 $ yarn generate
 ```
 
-## QAのCollection作成
+## 1. クラスタ作成
+
+```sh
+$ sudo docker exec -it mongodb3 mongo # PRIMARYに接続
+> config = {"_id" : "mongodb-repl-set","members" : [{"_id" : 0,"host" : "mongodb1:27017","priority" : 1},{"_id" : 1,"host" : "mongodb2:27017","priority" : 1},{"_id" : 2,"host" : "mongodb3:27017","priority" : 2}]}
+> rs.initiate(config)
+> rs.status()
+```
+
+## 2. QAのCollection作成
 
 ```sh
 $ sudo docker exec -it mongodb3 mongo # PRIMARYに接続
@@ -30,7 +39,7 @@ $ sudo docker exec -it mongodb3 mongo # PRIMARYに接続
 questions
 ```
 
-## Kuromojiの全文検索設定
+## 3. Kuromojiの全文検索設定
 
 ### open, closeしてインデックスの設定変更
 
