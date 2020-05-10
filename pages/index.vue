@@ -101,7 +101,9 @@
       { id: 3, name: 'B', message: 'フィードバックは〜だよ！！', my: false },
       { id: 4, name: 'A', message: '感謝！次からは気をつけるよ！', my: true },
       ]" />
+      -->
       <BacklogDetail></BacklogDetail>
+      <!--
       <nuxt-link to="/works">投稿＆全文検索のサンプルへ飛ぶ</nuxt-link>
       <nuxt-link to="/reports">個別ページのサンプルへ飛ぶ</nuxt-link>
       -->
