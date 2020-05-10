@@ -33,7 +33,7 @@ body {
    @apply bg-gray-100;
 }
 input[type=text], input[type=search], textarea, button {
-  @apply appearance-none border-none rounded bg-transparent outline-none text-sm;
+  @apply appearance-none border-none rounded bg-transparent outline-none text-sm pt-3;
   transition: all 0.3s ease-in-out;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
   color: rgba(0, 0, 0, 0.65);
@@ -58,25 +58,33 @@ button:hover, button:active, button:focus,
 .card {
   @apply shadow-md rounded p-2 px-4 mb-1 flex flex-col text-sm relative;
 }
+.card.solid {
+  @apply shadow-none;
+}
 .card .icon {
-  @apply absolute bottom-0 right-0 font-bold rounded-full w-5 h-5 flex justify-center items-center bg-gray-500 text-gray-100;
+  @apply absolute bottom-0 right-0 rounded-full w-5 h-5 flex justify-center items-center bg-transparent text-gray-100 mb-1 mr-1 font-extrabold text-xs;
+  padding-top: 0.125rem;
 }
 .card-group {
   @apply p-2 rounded shadow-md mx-1;
   min-width: 6rem;
   min-height: 6rem;
 }
+.card-group.solid {
+  @apply shadow-none;
+}
 .card-group-header {
   @apply relative;
 }
 .card-group-header .title {
+  @apply text-sm;
   color: rgba(255, 255, 255, 0.75);
 }
 .card-group-header.light .title {
   color: rgba(0, 0, 0, 0.75);
 }
 .card-group-header .icon {
-  @apply absolute top-0 right-0 mr-1;
+  @apply text-sm absolute top-0 right-0 mr-1;
   color: rgba(255, 255, 255, 0.75);
 }
 .card-group-header.light .icon {
@@ -112,8 +120,8 @@ a:visited { @apply underline text-purple-600; }
   background: rgba(255, 255, 255, 0.1) !important;
 }
 .v--modal {
-  @apply px-2 py-4 rounded overflow-y-auto !important;
-  background: rgba(255, 255, 255, 0.85) !important;
+  @apply px-2 py-4 rounded overflow-y-auto !important;/* shadow-none bg-transparent */
+  background: rgba(255, 255, 255, 0.75) !important;
 }
 @media (prefers-color-scheme: light) {
   /* light mode */
