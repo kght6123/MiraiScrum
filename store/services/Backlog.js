@@ -3,7 +3,8 @@ const state = () => ({
   backlogs: [
     {
       id: '',
-      canbanIds: [],
+      unit: 'weekly', // monthly, weekly, day
+      unitNumber: 20200511, // 202005, 20200511, 20200516
       title: '',
       point: 2, // 1,2,4,5,8
       createAt: '2020-06-20 10:00',
