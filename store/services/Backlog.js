@@ -2,16 +2,20 @@ const state = () => ({
   value: '',
   backlogs: [
     {
-      id: '',
-      unit: 'weekly', // monthly, weekly, day
-      unitNumber: 20200511, // 202005, 20200511, 20200516
+      id: '', // uuid v4 https://github.com/uuidjs/uuid
+      // unit: 'weekly', // monthly, weekly, day
+      // unitNumber: 20200511, // 202005, 20200511, 20200516
       title: '',
       point: 2, // 1,2,4,5,8
-      createAt: '2020-06-20 10:00',
-      createUserId: '',
-      updateAt: '2020-06-20 10:00',
-      updateUserId: '',
-      mainUserIds: [],
+      // createAt: '2020-06-20 10:00',
+      // createUserId: '',
+      // updateAt: '2020-06-20 10:00',
+      // updateUserId: '',
+      // mainUserIds: [],
+      progress: 'TODO', // TODO, DOING, DONE
+      progressAt: { TODO: '2020-06-20 10:00' },
+      progressUserId: { TODO: '' },
+      childBacklogIds: ['', ] // 子供のBacklogのIdリスト
     }
   ],
 })
