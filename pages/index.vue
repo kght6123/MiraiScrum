@@ -146,6 +146,17 @@ export default {
     }
   },
   computed: {
+    ...mapGetters('services/Canban', [
+      'getBacklogIds'
+    ]),
+    backlogIds: {
+      get() {
+        return this.getBacklogIds
+      },
+      set(value) {
+        // this.setHoge(value)
+      }
+    },
     nowId: {
       get: function () {
         return this.getStringForDateFormat('YYYYMMDD', this.date)
@@ -176,6 +187,9 @@ export default {
      ...mapActions('services/BacklogDetail', [
       'showDetail',
       'hideDetail'
+    ]),
+    ...mapActions('services/Backlog', [
+      'doCreateBacklog'
     ]),
     goPrevDay: function () {
       // console.log(this.date)

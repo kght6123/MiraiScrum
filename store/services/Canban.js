@@ -11,9 +11,27 @@ const state = () => ({
     }
   ],
 })
-const mutations = {}
-const actions = {}
-const getters = {}
+const mutations = {
+  setBacklogIds(_state, backlogIds) {
+    _state.backlogIds = backlogIds
+  },
+  addBacklogId(_state, backlogId) {
+    _state.backlogIds.push(backlogId)
+  }
+}
+const actions = {
+  addBacklogId({ commit }, backlogId) {
+    commit('addBacklogId', backlogId)
+  }
+}
+const getters = {
+  getBacklogIds(_state) {
+    return _state.backlogIds
+  },
+  getProgresses(_state) {
+    return _state.progresses
+  }
+}
 
 export default {
   namespaced: true,

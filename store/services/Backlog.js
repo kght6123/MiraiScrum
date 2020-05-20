@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 const state = () => ({
   value: '',
   backlogs: [
@@ -24,10 +25,47 @@ const mutations = {
   setValue(_state, value) {
     _state.value = value
     // Vue.set(_state.values, `hoge`, value)
+  },
+  setBacklogs(_state, backlogs) {
+    _state.backlogs = backlogs
+  },
+  addBacklog(_state, backlog) {
+    _state.backlogs.push(backlog)
   }
 }
 
 const actions = {
+  addBacklog({ commit }, backlog) {
+    commit('addBacklog', backlog)
+  },
+  async doCreateBacklog({ dispatch }, { title, point, progress, userId, childBacklogIds }) {
+    const id = uuidv4()
+    const updateAt = new Date()
+    const progressAt = {}
+    progressAt[progress] = updateAt
+    const progressUserId = {}
+    progressUserId[progress] = userId
+    const backlog = {
+      id,
+      title,
+      point, // 1,2,4,5,8
+      createAt: updateAt,
+      createUserId: userId,
+      updateAt: updateAt,
+      updateUserId: userId,
+      progress, // TODO, DOING, DONE
+      progressAt,
+      progressUserId,
+      childBacklogIds // 子供のBacklogのIdリスト
+    }
+    await dispatch('addBacklog', backlog)
+    await dispatch(
+      'services/Canban/addBacklogId', id,
+      {
+        root: true
+      }
+    )
+  },
   async hogehoge({ dispatch, commit, getters, rootGetters }) {
     await dispatch('hoge', getters.getValue)
     commit('setValue', value)
