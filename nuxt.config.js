@@ -48,6 +48,8 @@ module.exports = {
     '@nuxtjs/tailwindcss',
     // Doc: https://github.com/nuxt-community/fontawesome-module
     '@nuxtjs/fontawesome',
+    // Doc: https://typescript.nuxtjs.org/guide/setup.html#module-options
+    '@nuxt/typescript-build',
   ],
   /*
   ** Nuxt.js modules
