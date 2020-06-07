@@ -1,4 +1,4 @@
-# mirai-share
+# mirai-scrum
 
 > My badass Nuxt.js project
 
@@ -103,6 +103,23 @@ curl -H "Content-Type: application/json" -X PUT 'localhost:9200/admin/_settings'
   }
 }'
 curl -H "Content-Type: application/json" -X POST 'localhost:9200/admin/_open'
+```
+
+## 4. mongo-connectorが起動しない件について
+
+dockerコンテナを単体で起動してログを調べる
+
+```
+$ sudo docker-compose logs mongo-connector
+Attaching to mongo-connector
+mongo-connector    | Logging to /mongo-connector.log.
+$ sudo docker ps -a
+$ sudo docker run -it --entrypoint=/bin/sh docker_mongo-connector
+
+$ sudo docker-compose run --service-ports --no-deps --entrypoint /bin/sh mongo-connector
+$ mongo-connector -m mongodb1 -t elasticsearch:9200 -d elastic2_doc_manager --continue-on-error --auto-commit-interval=0
+$ vi mongo-connector.log
+# 2020-04-26 04:20:26,151 [ERROR] mongo_connector.connector:381 - No replica set at "mongodb1"! A rep
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

@@ -11,7 +11,7 @@ services:
   mongodb1:
     #build: ./mongodb
     image: mongo:4.0.14
-    restart: always
+    # restart: always
     # environment:
     #   - MONGO_INITDB_ROOT_USERNAME=root
     #   - MONGO_INITDB_ROOT_PASSWORD=example
@@ -22,7 +22,7 @@ services:
     ports:
       - 17017:27017
     volumes:
-      - ./mongodb1:/data/db
+      - mongodata1:/data/db
     networks:
       - mongodb-cluster
     command: [mongod, --replSet, mongodb-repl-set]
@@ -31,7 +31,7 @@ services:
       #- mongodb3
   mongodb2:
     image: mongo:4.0.14
-    restart: always
+    # restart: always
     # environment:
     #   - MONGO_INITDB_ROOT_USERNAME=root
     #   - MONGO_INITDB_ROOT_PASSWORD=example
@@ -42,7 +42,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ./mongodb2:/data/db
+      - mongodata2:/data/db
     networks:
       - mongodb-cluster
     command: [mongod, --replSet, mongodb-repl-set]
@@ -50,7 +50,7 @@ services:
       - mongodb3
   mongodb3:
     image: mongo:4.0.14
-    restart: always
+    # restart: always
     # environment:
     #   - MONGO_INITDB_ROOT_USERNAME=root
     #   - MONGO_INITDB_ROOT_PASSWORD=example
@@ -61,7 +61,7 @@ services:
     ports:
       - 37017:27017
     volumes:
-      - ./mongodb3:/data/db
+      - mongodata3:/data/db
     networks:
       - mongodb-cluster
     command: [mongod, --replSet, mongodb-repl-set]
@@ -89,7 +89,7 @@ services:
       discovery.type: single-node
       ES_JAVA_OPTS: "-Xms512m -Xmx512m"
     volumes:
-      - ./esdata1:/usr/share/elasticsearch/data
+      - esdata1:/usr/share/elasticsearch/data
   kibana:
     image: docker.elastic.co/kibana/kibana:7.5.1
     container_name: kibana
@@ -111,3 +111,8 @@ services:
     networks:
       - mongodb-cluster
       - main
+volumes:
+  mongodata1:
+  mongodata2:
+  mongodata3:
+  esdata1:
