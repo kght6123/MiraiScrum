@@ -13,7 +13,7 @@ RUN sudo apt-get -q update && \
     software-properties-common \
     uidmap \
     iptables \
-    module-init-tools && \
+    kmod && \
     sudo apt-get clean && \
     sudo rm -rf /var/lib/apt/lists/*
 
