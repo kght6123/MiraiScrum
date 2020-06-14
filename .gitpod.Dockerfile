@@ -15,9 +15,8 @@ RUN sudo apt-get -q update && \
     iptables \
     kmod && \
     sudo apt-get clean && \
-    sudo rm -rf /var/lib/apt/lists/*
-
-RUN sudo modprobe ip_tables
+    sudo rm -rf /var/lib/apt/lists/* && \
+    sudo modprobe ip_tables
 
 #
 # More information: https://www.gitpod.io/docs/config-docker/
