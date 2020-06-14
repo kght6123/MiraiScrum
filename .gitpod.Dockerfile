@@ -7,8 +7,7 @@ USER gitpod
 #
 RUN sudo apt-get -q update && \
     sudo apt-get install -yq bastet && \
-    sudo apt-get install -yq t-transport-https \
-    ca-certificates \
+    sudo apt-get install -yq ca-certificates \
     curl \
     gnupg-agent \
     software-properties-common && \
