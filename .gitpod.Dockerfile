@@ -11,7 +11,8 @@ RUN sudo apt-get -q update && \
     curl \
     gnupg-agent \
     software-properties-common \
-    uidmap && \
+    uidmap \
+    iptables && \
     sudo apt-get clean && \
     sudo rm -rf /var/lib/apt/lists/*
 #
