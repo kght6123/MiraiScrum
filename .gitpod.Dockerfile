@@ -23,7 +23,7 @@ RUN apk add openrc docker docker-compose
 #    && \
 #    sudo modprobe ip_tables
 
-RUN service docker start
+# RUN service docker start # already started!!!
 
 #
 # More information: https://www.gitpod.io/docs/config-docker/
