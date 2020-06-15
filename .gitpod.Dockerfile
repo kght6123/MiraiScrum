@@ -1,21 +1,22 @@
-FROM gitpod/workspace-full
+FROM node:alpine
+# FROM gitpod/workspace-full
 
-USER gitpod
+# USER gitpod
 
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
 #
-RUN sudo apt-get -q update && \
-    sudo apt-get install -yq bastet && \
-    sudo apt-get install -yq ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common \
-    uidmap \
-    iptables \
-    kmod && \
-    sudo apt-get clean && \
-    sudo rm -rf /var/lib/apt/lists/*
+#RUN sudo apt-get -q update && \
+#    sudo apt-get install -yq bastet && \
+#    sudo apt-get install -yq ca-certificates \
+#    curl \
+#    gnupg-agent \
+#    software-properties-common \
+#    uidmap \
+#    iptables \
+#    kmod && \
+#    sudo apt-get clean && \
+#    sudo rm -rf /var/lib/apt/lists/*
     
 #    && \
 #    sudo modprobe ip_tables
