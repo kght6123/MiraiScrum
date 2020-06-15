@@ -1,7 +1,7 @@
 FROM node:alpine
 # FROM gitpod/workspace-full
 
-RUN cat "http://dl-cdn.alpinelinux.org/alpine/v3.11/testing/" >> /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.11/testing/" >> /etc/apk/repositories
 # USER gitpod
 
 # Install custom tools, runtime, etc. using apt-get
