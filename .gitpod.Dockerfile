@@ -1,11 +1,13 @@
 FROM node:alpine
 # FROM gitpod/workspace-full
 
+RUN cat "http://dl-cdn.alpinelinux.org/alpine/v3.11/testing/" >> /etc/apk/repositories
 # USER gitpod
 
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
 #
+RUN apk add docker docker-compose
 #RUN sudo apt-get -q update && \
 #    sudo apt-get install -yq bastet && \
 #    sudo apt-get install -yq ca-certificates \
@@ -20,6 +22,8 @@ FROM node:alpine
     
 #    && \
 #    sudo modprobe ip_tables
+
+RUN service docker start
 
 #
 # More information: https://www.gitpod.io/docs/config-docker/
