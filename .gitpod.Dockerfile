@@ -8,6 +8,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.11/testing/" >> /etc/apk/repos
 # For example, the command below would install "bastet" - a command line tetris clone:
 #
 RUN apk add openrc docker docker-compose
+RUN npm install -g yarn
 #RUN sudo apt-get -q update && \
 #    sudo apt-get install -yq bastet && \
 #    sudo apt-get install -yq ca-certificates \
