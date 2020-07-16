@@ -117,6 +117,5 @@ module.exports = {
     extend (config, ctx) {
     }
   },
-  serverMiddleware: [`~/api/`],
   env: envObj,
 }
