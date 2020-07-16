@@ -31,7 +31,8 @@ module.exports = {
   */
   css: [
     // { src: '~/node_modules/highlight.js/styles/xcode.css', lang: 'css' },
-    '~/assets/stylus/hjs.styl',
+    // '~/assets/stylus/hjs.styl',
+    // 'gridjs/dist/theme/mermaid.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -49,55 +50,54 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/fontawesome-module
     '@nuxtjs/fontawesome',
     // Doc: https://typescript.nuxtjs.org/guide/setup.html#module-options
-    '@nuxt/typescript-build',
+    // '@nuxt/typescript-build',
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
+    // '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/markdownit
-    '@nuxtjs/markdownit',
+    // '@nuxtjs/markdownit',
     // Doc: https://github.com/nuxt-community/style-resources-module
-    '@nuxtjs/style-resources',
+    // '@nuxtjs/style-resources',
   ],
 
-  styleResources: {
-    stylus: ['~/assets/stylus/global_variables.styl']
-   },
+  // styleResources: {
+  //   // stylus: ['~/assets/stylus/global_variables.styl']
+  // },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {
-  },
+  // axios: {
+  // },
   // [optional] markdownit options
   // See https://github.com/markdown-it/markdown-it
-  markdownit: {
-    injected: true,
-
-    html: true,
-    preset: 'default',
-    linkify: true,
-    breaks: true,
-    use: [
-      // 'markdown-it-div',
-      // 'markdown-it-attrs'
-    ],
-    highlight: function (str, lang) {
-      const hljs = require('highlight.js'); // https://highlightjs.org/
-      if (lang && hljs.getLanguage(lang)) {
-        try {
-          return hljs.highlight(lang, str).value;
-        } catch (__) {}
-      }
-      return ''; // use external default escaping
-    }
-  },
+  // markdownit: {
+  //   injected: true,
+  //   html: true,
+  //   preset: 'default',
+  //   linkify: true,
+  //   breaks: true,
+  //   use: [
+  //     // 'markdown-it-div',
+  //     // 'markdown-it-attrs'
+  //   ],
+  //   highlight: function (str, lang) {
+  //     const hljs = require('highlight.js'); // https://highlightjs.org/
+  //     if (lang && hljs.getLanguage(lang)) {
+  //       try {
+  //         return hljs.highlight(lang, str).value;
+  //       } catch (__) {}
+  //     }
+  //     return ''; // use external default escaping
+  //   }
+  // },
   dotenv: {
     /* module options */
     filename: '.env'
@@ -111,6 +111,20 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    babel: {
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            targets: {
+              ie: '11'
+            },
+            useBuiltIns: 'usage',
+            corejs: 3
+          }
+        ]
+      ]
+    },
     /*
     ** You can extend webpack config here
     */
