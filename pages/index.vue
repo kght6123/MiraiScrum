@@ -108,9 +108,17 @@
       <nuxt-link to="/reports">個別ページのサンプルへ飛ぶ</nuxt-link>
       -->
     </div>
+    <!-- Grid -->
     <grid :cols="cols" :rows="rows" :theme="theme"></grid>
+    <!-- Gantt -->
     <GSTC :config="config" @state="onState" />
+    <!-- Marpit -->
     <div v-for="(htm, index) in html" :key="index" v-html="htm" class="slide"></div>
+    <!-- jExcel -->
+    <div>
+      <div ref="spreadsheet"></div>
+      <div><input type="button" value="Add new row" @click="() => spreadsheet.insertRow()" /></div>
+    </div>
   </div>
 </template>
 
@@ -123,6 +131,8 @@ import BacklogDetail from '~/components/BacklogDetail.vue'
 import Grid from 'gridjs-vue'
 import GSTC from 'vue-gantt-schedule-timeline-calendar'
 import Marpit from '@marp-team/marpit'
+import jexcel from 'jexcel'
+import 'jexcel/dist/jexcel.css'
 
 // 1. Create instance (with options if you want)
 const marpit = new Marpit()
@@ -169,12 +179,14 @@ export default {
         { name: '2-1 mongo-connectorのコンテナに入る方法を調べる', id: 5, pointMitumori: 1 },
         { name: '4-1 elastic-searchで日本語の全文検索をできる方法を調べる', id: 6, pointMitumori: 1 }
       ],
+      // Grid
       cols: ['Make', 'Model', 'Year', 'Color'],
       rows: [
         ['Ford', 'Fusion', '2011', 'Silver'],
         ['Chevrolet', 'Cruz', '2018', 'White']
       ],
       theme: 'none',
+      // Gantt
       config: {
         height: 300,
         list: {
@@ -267,8 +279,27 @@ export default {
           }
         }
       },
+      // Marpit
       subs: [],
       html: [],
+      // jExcel
+      spreadsheet: null,
+      options: {
+        data: [
+          ['Jazz', 'Honda', '2019-02-12', '', true, '$ 2.000,00', '#777700'],
+          ['Civic', 'Honda', '2018-07-11', '', true, '$ 4.000,01', '#007777']
+        ],
+        allowToolbar:true,
+        columns: [
+          { type: 'text', title: 'Car', width: '120px' },
+          { type: 'dropdown', title: 'Make', width: '250px', source: [ 'Alfa Romeo', 'Audi', 'Bmw' ] },
+          { type: 'calendar', title: 'Available', width: '250px' },
+          { type: 'image', title: 'Photo', width: '120px' },
+          { type: 'checkbox', title: 'Stock', width: '80px' },
+          { type: 'numeric', title: 'Price', width: '100px', mask: '$ #.##,00', decimal: ',' },
+          { type: 'color', width: '100px', render: 'square' }
+        ]
+      }
     }
   },
   computed: {
@@ -306,13 +337,17 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
+      // marpit
       const { html } = marpit.render(markdown, { htmlAsArray: true })
       this.html = html
+      // gannt
       setTimeout(() => {
         const item1 = this.config.chart.items["1"]
         item1.label = "label changed dynamically"
         item1.time.end += 2 * 24 * 60 * 60 * 1000
       }, 2000)
+      // jExcel
+      this.spreadsheet = jexcel(this.$refs.spreadsheet, this.options)
     })
   },
   methods: {
