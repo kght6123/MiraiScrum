@@ -11,6 +11,7 @@
     "start": "cross-env NODE_ENV=production nuxt start"
   },
   "dependencies": {
+    "@marp-team/marpit": "^1.6.2",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "cross-env": "^5.2.0",
@@ -33,6 +34,7 @@
     "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/tailwindcss": "^1.0.0",
     "core-js": "3",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "stylelint-config-recommended": "^3.0.0"
   }
 }

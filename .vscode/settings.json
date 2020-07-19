@@ -1,3 +1,6 @@
 {
-	"peacock.color": "#61dafb"
+	"peacock.color": "#61dafb",
+	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false
 }

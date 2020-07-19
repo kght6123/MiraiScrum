@@ -110,6 +110,7 @@
     </div>
     <grid :cols="cols" :rows="rows" :theme="theme"></grid>
     <GSTC :config="config" @state="onState" />
+    <div v-for="(htm, index) in html" :key="index" v-html="htm" class="slide"></div>
   </div>
 </template>
 
@@ -121,6 +122,25 @@ import Balloons from '~/components/Balloons.vue'
 import BacklogDetail from '~/components/BacklogDetail.vue'
 import Grid from 'gridjs-vue'
 import GSTC from 'vue-gantt-schedule-timeline-calendar'
+import Marpit from '@marp-team/marpit'
+
+// 1. Create instance (with options if you want)
+const marpit = new Marpit()
+
+// 3. Render markdown
+const markdown = `
+
+# Hello, Marpit!
+
+Marpit is the skinny framework for creating slide deck from Markdown.
+
+---
+
+## Ready to convert into PDF!
+
+You can convert into PDF slide deck through Chrome.
+
+`
 
 export default {
   components: {
@@ -247,7 +267,8 @@ export default {
           }
         }
       },
-      subs: []
+      subs: [],
+      html: [],
     }
   },
   computed: {
@@ -285,6 +306,8 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
+      const { html } = marpit.render(markdown, { htmlAsArray: true })
+      this.html = html
       setTimeout(() => {
         const item1 = this.config.chart.items["1"]
         item1.label = "label changed dynamically"
@@ -414,4 +437,8 @@ export default {
   @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
+.slide {
+  @apply flex content-center justify-center w-screen h-screen;
+}
+
 </style>

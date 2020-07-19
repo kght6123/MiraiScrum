@@ -129,3 +129,9 @@ a:visited { @apply underline text-purple-600; }
 @media (prefers-color-scheme: dark) {
   /* dark mode */
 }
+th.gridjs-th {
+  @apply px-1 py-1 !important;
+}
+td.gridjs-td {
+  @apply px-1 py-1 !important;
+}
