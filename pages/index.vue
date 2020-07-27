@@ -6,6 +6,30 @@
         { label: weekLabel, url: '#' },
         { label: dayLabel, url: '#' },
       ]" class="ml-3" />
+    <grid
+      :data="gridProps.data"
+      :columns="gridProps.columns"
+      :rowHeaders="gridProps.rowHeaders"
+      :columnOptions="gridProps.columnOptions"
+      :options="{ usageStatistics: false }"
+    ></grid>
+    <calendar style="height: 800px;"
+        :calendars="calendarList"
+        :schedules="scheduleList"
+        :view="view"
+        :taskView="taskView"
+        :scheduleView="scheduleView"
+        :theme="theme"
+        :week="week"
+        :month="month"
+        :timezones="timezones"
+        :disableDblClick="disableDblClick"
+        :isReadOnly="isReadOnly"
+        :template="template"
+        :useCreationPopup="useCreationPopup"
+        :useDetailPopup="useDetailPopup"
+        :usageStatistics="false"
+    />
   </div>
 </template>
 
@@ -13,28 +37,126 @@
 import { mapGetters, mapActions } from 'vuex'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
 
+// tui-grid
+import 'tui-grid/dist/tui-grid.css'
+import { Grid } from '@toast-ui/vue-grid'
+
+// tui-calendar
+import { Calendar } from '@toast-ui/vue-calendar';
+import 'tui-calendar/dist/tui-calendar.css';
+
+// If you use the default popups, use this.
+import 'tui-date-picker/dist/tui-date-picker.css';
+import 'tui-time-picker/dist/tui-time-picker.css';
+
 export default {
   components: {
-    Breadcrumbs
+    Breadcrumbs,
+    grid: Grid,
+    calendar: Calendar
   },
   data() {
     return {
       id: '20200614',
       projectLabel: 'MiraiScrum',
       date: new Date(),
-      list: [
-        { name: '1-1-1 モーダルウィンドウのコンポーネントを調べる', id: 0, pointMitumori: 1 },
-        { name: '1-1-2 モーダルウィンドウのコンポーネントを作る', id: 1, pointMitumori: 2 },
-        { name: '1-2 見積もりポイントのアイコンをコンポーネント化する', id: 2, pointMitumori: 1 }
+      // TOAST UI Grid
+      gridProps: {
+        data: [
+          // for rowData prop
+          {
+            name: 'Beautiful Lies',
+            artist: 'Birdy'
+          },
+          {
+            name: 'X',
+            artist: 'Ed Sheeran'
+          }
+        ],
+        columns: [
+          // for columnData prop
+          {
+            header: 'Name',
+            name: 'name'
+          },
+          {
+            header: 'Artist',
+            name: 'artist'
+          }
+        ]
+      },
+      // TOAST UI Calendar
+      calendarList: [
+          {
+              id: '0',
+              name: 'home'
+          },
+          {
+              id: '1',
+              name: 'office'
+          }
       ],
-      list2: [
-        { name: '3 見積もりポイントのアイコンを作る', id: 3, pointMitumori: 1 },
-        { name: '2-2 mongo-connectorが起動しない問題を調べる', id: 4, pointMitumori: 1 }
+      scheduleList: [
+          {
+              id: '1',
+              calendarId: '1',
+              title: 'my schedule',
+              category: 'time',
+              dueDateClass: '',
+              start: '2018-10-18T22:30:00+09:00',
+              end: '2018-10-19T02:30:00+09:00'
+          },
+          {
+              id: '2',
+              calendarId: '1',
+              title: 'second schedule',
+              category: 'time',
+              dueDateClass: '',
+              start: '2018-10-18T17:30:00+09:00',
+              end: '2018-10-19T17:31:00+09:00'
+          }
       ],
-      list3: [
-        { name: '2-1 mongo-connectorのコンテナに入る方法を調べる', id: 5, pointMitumori: 1 },
-        { name: '4-1 elastic-searchで日本語の全文検索をできる方法を調べる', id: 6, pointMitumori: 1 }
-      ],
+      view: 'day',
+      taskView: false,
+      scheduleView: ['time'],
+      theme: {
+          'month.dayname.height': '30px',
+          'month.dayname.borderLeft': '1px solid #ff0000',
+          'month.dayname.textAlign': 'center',
+          'week.today.color': '#333',
+          'week.daygridLeft.width': '100px',
+          'week.timegridLeft.width': '100px'
+      },
+      week: {
+          narrowWeekend: true,
+          showTimezoneCollapseButton: true,
+          timezonesCollapsed: false
+      },
+      month: {
+          visibleWeeksCount: 6,
+          startDayOfWeek: 1
+      },
+      timezones: [{
+          timezoneOffset: 540,
+          displayLabel: 'GMT+09:00',
+          tooltip: 'Seoul'
+      }, {
+          timezoneOffset: -420,
+          displayLabel: 'GMT-08:00',
+          tooltip: 'Los Angeles'
+      }],
+      disableDblClick: true,
+      isReadOnly: false,
+      template: {
+          milestone: function(schedule) {
+              return `<span style="color:red;">${schedule.title}</span>`;
+          },
+          milestoneTitle: function() {
+              return 'MILESTONE';
+          },
+      },
+      useCreationPopup: true,
+      useDetailPopup: false,
     }
   },
   computed: {
@@ -143,24 +265,6 @@ export default {
       format_str = format_str.replace(/DW/g, dayOfWeekStr)
       return format_str
     },
-    add: function() {
-      this.list.push({ name: 'Juan1 ' + this.id, id: this.id++ })
-    },
-    replace: function() {
-      this.list = [{ name: 'Edgard1', id: this.id++ }]
-    },
-    add2: function() {
-      this.list2.push({ name: 'Juan2 ' + this.id, id: this.id++ })
-    },
-    replace2: function() {
-      this.list2 = [{ name: 'Edgard2', id: this.id++ }]
-    },
-    add3: function() {
-      this.list3.push({ name: 'Juan3 ' + this.id, id: this.id++ })
-    },
-    replace3: function() {
-      this.list3 = [{ name: 'Edgard3', id: this.id++ }]
-    },
     async show () {
       // this.$modal.show('hello-world');
       await this.showDetail()
@@ -195,23 +299,10 @@ export default {
       }, {
         draggable: true
       })
-    },
-    onState(state) {
-      this.state = state
-      this.subs.push(
-        state.subscribe("config.chart.items.1", item => {
-          console.log("item 1 changed", item)
-        })
-      )
-      this.subs.push(
-        state.subscribe("config.list.rows.1", row => {
-          console.log("row 1 changed", row)
-        })
-      )
     }
   },
   beforeDestroy() {
-    this.subs.forEach(unsub => unsub());
+    
   }
 }
 </script>
