@@ -2,22 +2,22 @@ import { v4 as uuidv4 } from 'uuid'
 const state = () => ({
   value: '',
   backlogs: [
-    {
-      id: '', // uuid v4 https://github.com/uuidjs/uuid
-      // unit: 'weekly', // monthly, weekly, day
-      // unitNumber: 20200511, // 202005, 20200511, 20200516
-      title: '',
-      point: 2, // 1,2,4,5,8
-      // createAt: '2020-06-20 10:00',
-      // createUserId: '',
-      // updateAt: '2020-06-20 10:00',
-      // updateUserId: '',
-      // mainUserIds: [],
-      progress: 'TODO', // TODO, DOING, DONE
-      progressAt: { TODO: '2020-06-20 10:00' },
-      progressUserId: { TODO: '' },
-      childBacklogIds: ['', ] // 子供のBacklogのIdリスト
-    }
+    // {
+    //   id: '', // uuid v4 https://github.com/uuidjs/uuid
+    //   // unit: 'weekly', // monthly, weekly, day
+    //   // unitNumber: 20200511, // 202005, 20200511, 20200516
+    //   title: '',
+    //   point: 2, // 1,2,4,5,8
+    //   // createAt: '2020-06-20 10:00',
+    //   // createUserId: '',
+    //   // updateAt: '2020-06-20 10:00',
+    //   // updateUserId: '',
+    //   // mainUserIds: [],
+    //   progress: 'TODO', // TODO, DOING, DONE
+    //   progressAt: { TODO: '2020-06-20 10:00' },
+    //   progressUserId: { TODO: '' },
+    //   childBacklogIds: ['', ] // 子供のBacklogのIdリスト
+    // }
   ],
 })
 
@@ -38,24 +38,33 @@ const actions = {
   addBacklog({ commit }, backlog) {
     commit('addBacklog', backlog)
   },
-  async doCreateBacklog({ dispatch }, { title, point, progress, userId, childBacklogIds }) {
+  async doCreateBacklog({ dispatch }, { title, fullTitle, point, progress, updateUser, supervisorUser, parentBacklogIds, childBacklogIds }) {
     const id = uuidv4()
-    const updateAt = new Date()
+    const updateAt = '2020/07/23 14:50'// new Date()
     const progressAt = {}
     progressAt[progress] = updateAt
-    const progressUserId = {}
-    progressUserId[progress] = userId
+    const progressUser = {}
+    progressUser[progress] = updateUser
     const backlog = {
       id,
+      priority: 9999,
+      project: 'MSC',
+      loadmap: '7/20週',
       title,
+      fullTitle,
       point, // 1,2,4,5,8
       createAt: updateAt,
-      createUserId: userId,
+      createUser: updateUser,
       updateAt: updateAt,
-      updateUserId: userId,
+      updateUser,
+      supervisorUser,
+      startAt: updateAt,
+      deadlineAt: updateAt,
       progress, // TODO, DOING, DONE
+      progressRate: '0', // 0～100
       progressAt,
-      progressUserId,
+      progressUser,
+      parentBacklogIds, // 親のBacklogのIdリスト
       childBacklogIds // 子供のBacklogのIdリスト
     }
     await dispatch('addBacklog', backlog)
@@ -107,6 +116,9 @@ const getters = {
   getValueParam1: _state => param1 => {
     return _state.value + param1
   },
+  getBacklogs(_state) {
+    return _state.backlogs
+  }
 }
 
 export default {

@@ -1,7 +1,8 @@
 {
   "name": "mirai-scrum",
   "version": "1.0.0",
-  "description": "フラクタルスプリントを運用するためのツール",
+  "description": "スクラムを運用するためのツール",
+  "displayName": "ﾐﾗｲｽｸﾗﾑ",
   "author": "kght6123",
   "private": true,
   "scripts": {

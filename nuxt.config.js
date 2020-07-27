@@ -7,7 +7,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: process.env.npm_display_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
@@ -19,7 +19,8 @@ module.exports = {
     script: [
       { src: 'https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js' },
       { src: 'https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js' },
-      { src: 'https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js' }
+      { src: 'https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js' },
+      { src: 'https://www.gstatic.com/charts/loader.js' }
     ]
   },
   /*
