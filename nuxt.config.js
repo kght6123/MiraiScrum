@@ -111,6 +111,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    hardSource: true,
     babel: {
       presets: [
         [
