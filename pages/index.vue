@@ -9,9 +9,10 @@
     <grid
       :data="gridProps.data"
       :columns="gridProps.columns"
-      :rowHeaders="gridProps.rowHeaders"
+      :rowHeaders="['checkbox']"
       :columnOptions="gridProps.columnOptions"
-      :options="{ usageStatistics: false }"
+      :usageStatistics="false"
+      :editingEvent="'click'"
     ></grid>
     <calendar style="height: 800px;"
         :calendars="calendarList"
@@ -77,11 +78,13 @@ export default {
           // for columnData prop
           {
             header: 'Name',
-            name: 'name'
+            name: 'name',
+            editor: 'text'
           },
           {
             header: 'Artist',
-            name: 'artist'
+            name: 'artist',
+            editor: 'text'
           }
         ]
       },
